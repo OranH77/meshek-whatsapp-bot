@@ -1,16 +1,15 @@
 import os
 import requests
 from fastapi import FastAPI, Request
-from dotenv import load_dotenv
 import google.generativeai as genai
-
-load_dotenv()
+from config import settings
 
 app = FastAPI()
 
-WHATSAPP_TOKEN = os.getenv("WHATSAPP_TOKEN")
-PHONE_ID = os.getenv("WHATSAPP_PHONE_NUMBER_ID")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+WHATSAPP_TOKEN = settings.WHATSAPP_TOKEN
+print(WHATSAPP_TOKEN)
+PHONE_ID = settings.WHATSAPP_PHONE_NUMBER_ID
+GEMINI_API_KEY = settings.GEMINI_API_KEY
 
 genai.configure(api_key=GEMINI_API_KEY)
 
